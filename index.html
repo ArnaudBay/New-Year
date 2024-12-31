@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvel An 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-900 overflow-hidden">
+    <div class="text-center">
+        <h1 class="text-6xl font-bold text-yellow-400 mb-6 animate__animated animate__fadeIn">🥳 Bonne année 2025 ! 🎊</h1>
+        <div class="text-9xl font-extrabold text-blue-500 mb-4 transition-opacity duration-1000" id="year">2024</div>
+        <div class="text-9xl font-extrabold text-green-400 opacity-0 transition-opacity duration-1000" id="new-year">2025</div>
+    </div>
+    
+    <div class="absolute left-1/4 bottom-0 w-16 h-24 balloon" style="animation: float 6s infinite;"></div>
+    <div class="absolute left-1/2 bottom-0 w-16 h-24 balloon" style="animation: float 6s infinite; animation-delay: 1s;"></div>
+    <div class="absolute right-1/4 bottom-0 w-16 h-24 balloon" style="animation: float 6s infinite; animation-delay: 2s;"></div>
+
+    <script>
+        const yearElement = document.getElementById('year');
+        const newYearElement = document.getElementById('new-year');
+
+        setTimeout(() => {
+            yearElement.classList.add('opacity-0');
+            setTimeout(() => {
+                yearElement.style.display = 'none';
+                newYearElement.classList.remove('opacity-0');
+            }, 1000);
+        }, 2000);
+
+        const colors = ['#ffcc00', '#ff4d4d', '#4dff4d', '#4d4dff', '#ff66b2', '#ff99cc', '#ffccff', '#66ccff'];
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'absolute w-2 h-2 rounded-full';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = Math.random() * -100 + 'vh'; // Commence au-dessus de l'écran
+            confetti.style.animation = 'fall 3s infinite';
+            document.body.appendChild(confetti);
+        }
+    </script>
+
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</body>
+</html>
